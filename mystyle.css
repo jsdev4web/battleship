@@ -1,4 +1,26 @@
+body {
+    background-color: lightblue;
+}
 
 h1 {
     color:blue
+}
+
+
+#boardHold {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+
+#board1Hold {
+    font-size: 2rem;
+    width: 250px;
+}
+
+
+#board2Hold {
+    width: 235px;
+    font-size: 2rem;
 }
