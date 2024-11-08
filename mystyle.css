@@ -10,17 +10,35 @@ h1 {
 #boardHold {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    justify-content: center;
+    
 }
 
+.cells {
 
-#board1Hold {
-    font-size: 2rem;
-    width: 250px;
+    border: 1px solid green;
 }
 
+.board1Hold {
+    font-size: 2.5rem;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    width: 320px;
 
-#board2Hold {
-    width: 235px;
-    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.board2Hold {
+    font-size: 2.5rem;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    width: 320px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
 }

@@ -30,13 +30,24 @@ export class Game {
     }
 
     makeBoard(){
+        let boardPrint = ""
         let size = 10;
         let ezis = 10;
         let arr = []
+        let linebreak = "\n"
         for(let i = 0; i < size; i++){  //rows
-            arr[i] = []  //this creates all of my rows
+            arr[i] = [] //this creates all of my rows
             for (let j = 0; j < ezis; j++){ //columns
-                 arr[i][j] = "#"  //this creates all of my columns
+
+                //My NEW CODE IS HERE
+                let testDiv = document.createElement("div")
+                testDiv.innerText = " #";
+                //console.log(testDiv)
+
+                //arr[i][j] =  " #"; // back to square 1
+                //this code gives me a div LOOK!!!!
+                //arr[i][j] = testDiv.outerHTML
+                arr[i][j] = testDiv.innerHTML
             }
         }
         return arr
