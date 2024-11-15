@@ -18,5 +18,3 @@ describe("is ship a object that works", () => {
     })
 
 })
-
-

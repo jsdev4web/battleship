@@ -6,7 +6,6 @@ export class Ships {
         this.length = length;
         this.points = points;
         this.coords = [];
-        this.sunkStatus = false
     }
 
     hits(){
@@ -16,7 +15,6 @@ export class Ships {
 
     isSunk(){
         if (this.length === this.points){
-            this.sunkStatus = true
             return `${this.name} has been sunk`
         }
     }
@@ -105,7 +103,6 @@ export class Game {
                     shipHolder[i].hits()
                     isMissed = true
                     shipHolder[i].isSunk()
-                    console.log(shipHolder)
                 } 
                 
             })
@@ -122,25 +119,37 @@ export class Player extends Game {
     constructor(){
         super()
         this.queue = [] // Only tracks coords not object
-        this.playerShips = []   
-    }
-
-    isAllSunk(){
-        let checker = this.playerShips
-        let counter = 0;
-        let stat = 0
-        checker.forEach(function(item){
-            
-            console.log(item.sunkStatus)
-            if(item.sunkStatus === false){
-                stat ++
-            }
-        })
-        console.log(stat)
-        if(stat === 0){
-            console.log("game over")
+        this.playerShips = []
+        this.carrier = {
+            name: "carrier",
+            length: 5,
+            points: 0,
+            coords: []
         }
-        return counter
+        this.battleship = {
+            name: "battleship",
+            length: 4,
+            points: 0,
+            coords: []
+        }
+        this.cruiser = {
+            name: "cruiser",
+            length: 3,
+            points: 0,
+            coords: []
+        }
+        this.submarine = {
+            name: "submarine",
+            length: 2,
+            points: 0,
+            coords: []
+        }
+        this.destroyer = {
+            name: "destroyer",
+            length: 1,
+            points: 0,
+            coords: []
+        }
     }
 }
 
