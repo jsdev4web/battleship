@@ -146,7 +146,7 @@ export class Game {
         if(direction === "horizontal"){
             for(let i = 0; i < len; i++){
                 
-                array[y][x+i] = "S";
+                array[y][x+i] = "#";
                 this.queue.push(`${y}-${x+i}`)
                 ship.coords.push(`${y}-${x+i}`)
                 
@@ -154,7 +154,7 @@ export class Game {
         }else if (direction === "vertical"){
             for(let i = 0; i < len; i++){
                 
-                array[y+i][x] = "S";
+                array[y+i][x] = "#";
                 this.queue.push(`${y+i}-${x}`)
                 ship.coords.push(`${y+i}-${x}`)
             }

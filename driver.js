@@ -298,16 +298,17 @@ cpuPlayercellListener.forEach(function(item, index){
 
 
         //Dont Move In case I want to hide letters and use colors!!!!
-        //cpuPlayer.queue.forEach(function(coord){
-          //  if (coord !== matchCoords){
+        //To See Board
+        cpuPlayer.queue.forEach(function(coord){ //off
+            if (coord !== matchCoords){ //off
             //    console.log(coord)
             //    console.log(matchCoords)
-        if(changeDom.innerHTML === " #"){
+        //if(changeDom.innerHTML === " #"){ //on
             changeDom.innerHTML = "M"
-            //changeDom.style.backgroundColor = "blue"
-        //} else if(coord === matchCoords){
+            changeDom.style.backgroundColor = "blue" //off
+        } else if(coord === matchCoords){ //off
             //console.log(index)
-            } else if(changeDom.innerHTML === "S"){
+            //} else if(changeDom.innerHTML === "S"){ //on
                 let whoTurn = cpuPlayer
                 if(whoTurn === cpuPlayer){
                     cpuPlayer.queue.forEach(function(item,index){
@@ -347,7 +348,7 @@ cpuPlayercellListener.forEach(function(item, index){
         
         }
     })
-}) //})
+}) }) //off the last one
 
 
 //CPU Player board ends here********************************/
@@ -381,15 +382,15 @@ cpucellListener.forEach(function(item){
     //console.log(cpuDomMatcher)
 
     //Dont Move If I want to hide the Letters M S H 
-    //cpu.queue.forEach(function(coord){
-       // if (coord !== cpuCoords){
+    cpu.queue.forEach(function(coord){
+        if (coord !== cpuCoords){
          //   console.log(coord)
           //  console.log(cpuCoords)
-    if (cpuDomMatcher === " #"){
+    //if (cpuDomMatcher === " #"){
         cpucellListener[cpu1DCoords].innerHTML = "M"
-        //cpucellListener[cpu1DCoords].style.backgroundColor = "blue"
-       // } else if(coord === cpuCoords){
-        } else if(cpuDomMatcher === "S"){
+        cpucellListener[cpu1DCoords].style.backgroundColor = "blue"
+        } else if(coord === cpuCoords){
+       // } else if(cpuDomMatcher === "S"){
             cpucellListener[cpu1DCoords].innerHTML = "H"
             cpu.queue.forEach(function(item,index){
                 //console.log(item)
@@ -422,7 +423,7 @@ cpucellListener.forEach(function(item){
         }
     }) 
 
-}) //}) Dont Move !!!!
+}) }) 
 
 //**************************ENDS CPU event listener attempt */
 
@@ -466,16 +467,16 @@ cellListener.forEach(function(item, index){
 
 
         //Dont Move !!!!
-        //player1.queue.forEach(function(coord){
-          //  if (coord !== matchCoords){
+        player1.queue.forEach(function(coord){
+            if (coord !== matchCoords){
             //    console.log(coord)
             //    console.log(matchCoords)
-        if(changeDom.innerHTML === " #"){
+        //if(changeDom.innerHTML === " #"){
             changeDom.innerHTML = "M"
-            //changeDom.style.backgroundColor = "blue"
-        //} else if(coord === matchCoords){
+            changeDom.style.backgroundColor = "blue"
+        } else if(coord === matchCoords){
             //console.log(index)
-            } else if(changeDom.innerHTML === "S"){
+            //} else if(changeDom.innerHTML === "S"){
                 let whoTurn = player1
                 if(whoTurn === player1){
                     player1.queue.forEach(function(item,index){
@@ -506,7 +507,7 @@ cellListener.forEach(function(item, index){
             }   //console.log(player1.queue)
         }
     })
-}) //})
+}) })
 
 let cellListener2 = document.querySelectorAll(".cells2")
 cellListener2.forEach(function(item, index){
@@ -529,16 +530,16 @@ cellListener2.forEach(function(item, index){
 
 
         //Dont Move Change the M H S to Letters
-        //player2.queue.forEach(function(coord){
-          //  if (coord !== matchCoords){
+        player2.queue.forEach(function(coord){
+            if (coord !== matchCoords){
                // console.log(coord)
                // console.log(matchCoords)
                 
-        if(changeDom.innerHTML === " #"){
-            //changeDom.style.backgroundColor = "blue"
+        //if(changeDom.innerHTML === " #"){
+            changeDom.style.backgroundColor = "blue"
             changeDom.innerHTML = "M"
-        //} else if(coord === matchCoords){
-        } else if(changeDom.innerHTML === "S"){
+        } else if(coord === matchCoords){
+        //} else if(changeDom.innerHTML === "S"){
             //Determine the coords, the ship and the player
             let whoTurn = player2
             if(whoTurn === player2){
@@ -575,10 +576,10 @@ cellListener2.forEach(function(item, index){
         }
     })
 })    
-//})
+})
 
 
-    return "Welcome to battleship, I left the visual in a format so a person can read the code/game"
+    return "Welcome to battleship"
 }
 
 console.log(gamePlay())
