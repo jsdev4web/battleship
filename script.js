@@ -28,6 +28,11 @@ export class Game {
         this.board = this.makeBoard()
         //this.queue = []
         this.missed = []
+        this.allAttempts = []
+    }
+
+    clicked(){
+        return "This has been clicked"
     }
 
     makeBoard(){
@@ -40,19 +45,15 @@ export class Game {
             arr[i] = [] //this creates all of my rows
             for (let j = 0; j < ezis; j++){ //columns
 
-                //My NEW CODE IS HERE
                 let testDiv = document.createElement("div")
                 testDiv.innerText = " #";
-                //console.log(testDiv)
-
-                //arr[i][j] =  " #"; // back to square 1
-                //this code gives me a div LOOK!!!!
-                //arr[i][j] = testDiv.outerHTML
                 arr[i][j] = testDiv.innerHTML
             }
         }
         return arr
     }
+
+
 
     placeShip(x, y, ship, direction){
         //what i searched -- place a vertical object on a 2D array javascript
@@ -61,7 +62,7 @@ export class Game {
         let length = array.length
         //console.log(length)
 
-        if(x < 0 || x >= array.length || y < 0 || y >= array.length){
+        if(x < 0 || x >= length || y < 0 || y >= length){
             return "Out of bounds"
         }
 
@@ -72,20 +73,29 @@ export class Game {
         
         x = x-1
         y = y-1
-        let queue = []
+
+        //add a if statement to stop off the board
         if(direction === "horizontal"){
             for(let i = 0; i < len; i++){
+                let offBoard = x + i
+                if(offBoard >= 10){
+                    array[y][x-i] = "S"
+                } else {
                 array[y][x+i] = "S";
                 this.queue.push(`${y}-${x+i}`)
                 ship.coords.push(`${y}-${x+i}`)
+                }
             }
         }else if (direction === "vertical"){
             for(let i = 0; i < len; i++){
+                let offBoard = y+1
+                if(offBoard >= 10){
+                    array[y-i][x] = "S"
+                } else {
                 array[y+i][x] = "S";
-                //pushes to the main queue
                 this.queue.push(`${y+i}-${x}`)
-                //pushes to each ships tracks coords property
                 ship.coords.push(`${y+i}-${x}`)
+                }
             }
         }
         return array
@@ -106,8 +116,8 @@ export class Game {
                     isMissed = true
                     shipHolder[i].isSunk()
                     console.log(shipHolder)
-                } 
-                
+                    
+                }
             })
         } //the end of the for loop is HERE!!!
         if(isMissed === false){
@@ -122,7 +132,8 @@ export class Player extends Game {
     constructor(){
         super()
         this.queue = [] // Only tracks coords not object
-        this.playerShips = []   
+        this.playerShips = []
+        this.allAttempts = []
     }
 
     isAllSunk(){
@@ -139,6 +150,7 @@ export class Player extends Game {
         console.log(stat)
         if(stat === 0){
             console.log("game over")
+            window.location.reload()
         }
         return counter
     }

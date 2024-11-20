@@ -34,6 +34,28 @@ h1 {
     
 }
 
+.cells3 {
+    
+    width: 40px;
+    border: 1px solid green;
+
+    display: flex;
+    justify-content: center;
+    
+}
+
+.cells4 {
+    
+    width: 40px;
+    border: 1px solid green;
+
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+
 .board1Hold {
     font-size: 2.5rem;
     margin-left: 30px;
@@ -48,6 +70,32 @@ h1 {
 }
 
 .board2Hold {
+    font-size: 2.5rem;
+    margin-left: 30px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    width: 460px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.cpuHold {
+    font-size: 2.5rem;
+    margin-left: 30px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    width: 460px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.cpuPlayerHold  {
     font-size: 2.5rem;
     margin-left: 30px;
     margin-right: 100px;
