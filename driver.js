@@ -111,7 +111,7 @@ function gamePlay(){
     //cpu.placeShip(9,3,underwater,"horizontal")
     //cpu.placeShip(9,9,toofast,"vertical")
     let cpuships = cpu.playerShips
-    //console.log(cpu.playerShips)  
+    console.log(cpu.playerShips)  
 
     cpuPlayer.placeShip(pX,pY,nightwatch,randomDir())
     cpuPlayer.placeShip(qX,qY,allday,randomDir())
@@ -125,6 +125,7 @@ function gamePlay(){
     //cpuPlayer.placeShip(9,3,Mary,"horizontal")
     //cpuPlayer.placeShip(9,9,armor,"vertical")
     let cpuPlayerships = cpuPlayer.playerShips
+    console.log(cpuPlayerships)
 
     //Tracking the coords of both ships Current
     //console.log(player1.queue, "Ship One Coords")
@@ -193,7 +194,7 @@ function gamePlay(){
     let cpuPlayerHold = document.createElement("div")
     cpuPlayerHold.setAttribute("class", "cpuPlayerHold")
 
-    let cpuPlayer1 = cpu.board
+    let cpuPlayer1 = cpuPlayer.board
     let cpuPlayerArray = [];
 
     for (let i = 0; i < cpuPlayer1.length; i++){
