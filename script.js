@@ -63,6 +63,7 @@ export class Game {
         //console.log(length)
 
         if(x < 0 || x >= length || y < 0 || y >= length){
+            console.log(x,y)
             return "Out of bounds"
         }
 
@@ -73,29 +74,89 @@ export class Game {
         
         x = x-1
         y = y-1
+        if (x === -1 || y === -1){
+            x = x+1
+            y = y+1
+        }
 
+        //This code accounts for if I go to far to the right
+        if (direction === "horizontal" && ship.length === 5 && x === 9){
+            x = x - 4
+        } else if (direction === "horizontal" && ship.length === 5 && x === 8){
+            x = x - 3
+        } else if (direction === "horizontal" && ship.length === 5 && x === 7){
+            x = x - 2
+        } else if (direction === "horizontal" && ship.length === 5 && x === 6){
+            x = x - 1
+        }
+
+        if (direction === "horizontal" && ship.length === 4 && x === 9){
+            x = x - 3
+        } else if (direction === "horizontal" && ship.length === 4 && x === 8){
+            x = x - 2
+        } else if (direction === "horizontal" && ship.length === 4 && x === 7){
+            x = x - 1
+        } 
+
+        if (direction === "horizontal" && ship.length === 3 && x === 9){
+            x = x - 2
+        } else if (direction === "horizontal" && ship.length === 3 && x === 8){
+            x = x - 1
+        } 
+
+        if (direction === "horizontal" && ship.length === 2 && x === 9){
+            x = x - 1
+        } 
+
+
+
+        //This code accounts for not going to far down
+        if (direction === "vertical" && ship.length === 5 && y === 9){
+            y = y - 4
+        } else if (direction === "vertical" && ship.length === 5 && y === 8){
+            y = y - 3
+        } else if (direction === "vertical" && ship.length === 5 && y === 7){
+            y = y - 2
+        } else if (direction === "vertical" && ship.length === 5 && y === 6){
+            y = y - 1
+        }
+
+        if (direction === "vertical" && ship.length === 4 && y === 9){
+            y = y - 3
+        } else if (direction === "vertical" && ship.length === 4 && y === 8){
+            y = y - 2
+        } else if (direction === "vertical" && ship.length === 4 && y === 7){
+            y = y - 1
+        } 
+
+        if (direction === "vertical" && ship.length === 3 && y === 9){
+            y = y - 2
+        } else if (direction === "vertical" && ship.length === 3 && y === 8){
+            y = y - 1
+        } 
+
+        if (direction === "vertical" && ship.length === 2 && y === 9){
+            y = y - 1
+        }
+
+
+
+        
         //add a if statement to stop off the board
         if(direction === "horizontal"){
             for(let i = 0; i < len; i++){
-                let offBoard = x + i
-                if(offBoard >= 10){
-                    array[y][x-i] = "S"
-                } else {
+                
                 array[y][x+i] = "S";
                 this.queue.push(`${y}-${x+i}`)
                 ship.coords.push(`${y}-${x+i}`)
-                }
+                
             }
         }else if (direction === "vertical"){
             for(let i = 0; i < len; i++){
-                let offBoard = y+1
-                if(offBoard >= 10){
-                    array[y-i][x] = "S"
-                } else {
+                
                 array[y+i][x] = "S";
                 this.queue.push(`${y+i}-${x}`)
                 ship.coords.push(`${y+i}-${x}`)
-                }
             }
         }
         return array

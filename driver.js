@@ -45,100 +45,92 @@ function gamePlay(){
     cpuPlayer.makeBoard()
 
     //View the boards
-    console.log(player1.board)
-    console.log(player2.board)
-    console.log(cpu.board, "belongs to cpu")
-    console.log(cpuPlayer)
+    //console.log(player1.board)
+    //console.log(player2.board)
+    //console.log(cpu.board, "belongs to cpu")
+    //console.log(cpuPlayer)
 
-    /*works but painful
-    let testX = prompt("what is the x of first ship? ")
-    let testY = prompt("what is the y of first ship? ")
-    player1.placeShip(testX, testY, hallmark, "vertical")*/
-
-    //BETTER SOLUTION !!!!!!!!!!!!!!!!!!! 
-    //Random generator first attempt
-    //let aX = Math.floor(Math.random() * 10)//0-9
+    
+    //BETTER SOLUTION !!!!!!!!!!! Random generator 0-9
     let [aX, aY, bX, bY, cX, cY, dX, dY, eX, eY] = Array.from({ length: 10 }, () => Math.floor(Math.random() * 10))
     let [fX, fY, gX, gY, hX, hY, iX, iY, jX, jY] = Array.from({ length: 10 }, () => Math.floor(Math.random() * 10))
 
+    //Give me a random vertical or horizontal mapping
     let randomDir = ()=> {
         let num = Math.floor(Math.random() * 2)
-        console.log(num)
+        //console.log(num)
         if(num === 0){
             return "vertical"
         } else if( num === 1){
             return "horizontal"
         }
     }
-
-    console.log(randomDir())
-    //console.log(aX, aY)
     
-    //player1.placeShip(aX,aY, hallmark, randomDir())
-    //player1.placeShip(bX,bY, terminator, randomDir())
-    //player1.placeShip(cX,cY, bruiser, randomDir())
-    //player1.placeShip(dX,dY, subship, randomDir())
-    //player1.placeShip(eX,eY, oneway, randomDir())
+    player1.placeShip(aX,aY, hallmark, randomDir())
+    player1.placeShip(bX,bY, terminator, randomDir())
+    player1.placeShip(cX,cY, bruiser, randomDir())
+    player1.placeShip(dX,dY, subship, randomDir())
+    player1.placeShip(eX,eY, oneway, randomDir())
 
-    //Leave the OLD WAY to place for now 
-    player1.placeShip(5,5, hallmark, "vertical")
-    player1.placeShip(3,2, terminator, "vertical")
-    player1.placeShip(7,2, bruiser, "horizontal")
-    player1.placeShip(8,1, subship, "horizontal")
-    player1.placeShip(1,8, oneway, "horizontal")
+    //Leaving the OLD WAY to test if needed 
+    //player1.placeShip(5,5, hallmark, "vertical")
+    //player1.placeShip(3,2, terminator, "vertical")
+    //player1.placeShip(7,2, bruiser, "horizontal")
+    //player1.placeShip(8,1, subship, "horizontal")
+    //player1.placeShip(1,8, oneway, "horizontal")
     let play1ships = player1.playerShips
-    console.log(play1ships)
+    //console.log(play1ships)
 
-    //player2.placeShip(fX,fY, carrier, randomDir())
-    //player2.placeShip(gX,gY, destroyer, randomDir())
-    //player2.placeShip(hX,hY, submarine, randomDir())
-    //player2.placeShip(iX,iY, battleship, randomDir())
-    //player2.placeShip(jX,jY, cruiser, randomDir())
+    player2.placeShip(fX,fY, carrier, randomDir())
+    player2.placeShip(gX,gY, destroyer, randomDir())
+    player2.placeShip(hX,hY, submarine, randomDir())
+    player2.placeShip(iX,iY, battleship, randomDir())
+    player2.placeShip(jX,jY, cruiser, randomDir())
 
     //Leave the old way to place for now 
-    player2.placeShip(6,5,carrier,"vertical")
-    player2.placeShip(7,2,destroyer,"vertical")
-    player2.placeShip(1,5,submarine,"horizontal")
-    player2.placeShip(7,3,battleship,"horizontal")
-    player2.placeShip(9,6,cruiser,"vertical")
+    //player2.placeShip(6,5,carrier,"vertical")
+    //player2.placeShip(7,2,destroyer,"vertical")
+    //player2.placeShip(1,5,submarine,"horizontal")
+    //player2.placeShip(7,3,battleship,"horizontal")
+    //player2.placeShip(9,6,cruiser,"vertical")
     let play2ships = player2.playerShips
     //console.log(player2.playerShips)
 
     let [kX, kY, lX, lY, mX, mY, nX, nY, oX, oY] = Array.from({ length: 10 }, () => Math.floor(Math.random() * 10))
     let [pX, pY, qX, qY, rX, rY, sX, sY, tX, tY] = Array.from({ length: 10 }, () => Math.floor(Math.random() * 10))
 
-    //cpu.placeShip(kX,kY,chaser,"vertical")
-    //cpu.placeShip(lX,lY,seeker,"vertical")
-    //cpu.placeShip(mX,mY,longride,"horizontal")
-    //cpu.placeShip(nX,nY,underwater,"horizontal")
-    //cpu.placeShip(oX,oY,toofast,"vertical")
+    cpu.placeShip(kX,kY,chaser,randomDir())
+    cpu.placeShip(lX,lY,seeker,randomDir())
+    cpu.placeShip(mX,mY,longride,randomDir())
+    cpu.placeShip(nX,nY,underwater,randomDir())
+    cpu.placeShip(oX,oY,toofast,randomDir())
 
-    cpu.placeShip(7,6,chaser,"vertical")
-    cpu.placeShip(6,3,seeker,"vertical")
-    cpu.placeShip(2,6,longride,"horizontal")
-    cpu.placeShip(9,3,underwater,"horizontal")
-    cpu.placeShip(9,9,toofast,"vertical")
+    //cpu.placeShip(7,6,chaser,"vertical")
+    //cpu.placeShip(6,3,seeker,"vertical")
+    //cpu.placeShip(2,6,longride,"horizontal")
+    //cpu.placeShip(9,3,underwater,"horizontal")
+    //cpu.placeShip(9,9,toofast,"vertical")
     let cpuships = cpu.playerShips
     //console.log(cpu.playerShips)  
 
-    //cpuPlayer.placeShip(pX,pY,nightwatch,"vertical")
-    //cpuPlayer.placeShip(qX,qY,allday,"vertical")
-    //cpuPlayer.placeShip(rX,rY,sleepy,"horizontal")
-    //cpuPlayer.placeShip(sX,sY,Mary,"horizontal")
-    //cpuPlayer.placeShip(tX,tY,armor,"vertical")
+    cpuPlayer.placeShip(pX,pY,nightwatch,randomDir())
+    cpuPlayer.placeShip(qX,qY,allday,randomDir())
+    cpuPlayer.placeShip(rX,rY,sleepy,randomDir())
+    cpuPlayer.placeShip(sX,sY,Mary,randomDir())
+    cpuPlayer.placeShip(tX,tY,armor,randomDir())
 
-    cpuPlayer.placeShip(7,6,nightwatch,"vertical")
-    cpuPlayer.placeShip(6,3,allday,"vertical")
-    cpuPlayer.placeShip(2,6,sleepy,"horizontal")
-    cpuPlayer.placeShip(9,3,Mary,"horizontal")
-    cpuPlayer.placeShip(9,9,armor,"vertical")
+    //cpuPlayer.placeShip(7,6,nightwatch,"vertical")
+    //cpuPlayer.placeShip(6,3,allday,"vertical")
+    //cpuPlayer.placeShip(2,6,sleepy,"horizontal")
+    //cpuPlayer.placeShip(9,3,Mary,"horizontal")
+    //cpuPlayer.placeShip(9,9,armor,"vertical")
     let cpuPlayerships = cpuPlayer.playerShips
 
     //Tracking the coords of both ships Current
-    console.log(player1.queue, "Ship One Coords")
-    console.log(player2.queue, "Ship Two Coords")
-    console.log(cpu.queue, "cpu ships coords")
-    console.log(cpuPlayer.queue, "cpuPlayer ships Coords")
+    //console.log(player1.queue, "Ship One Coords")
+    //console.log(player2.queue, "Ship Two Coords")
+    //console.log(cpu.queue, "cpu ships coords")
+    //console.log(cpuPlayer.queue, "cpuPlayer ships Coords")
 
 
     //creates main board holder
@@ -170,11 +162,11 @@ function gamePlay(){
     let board2 = player2.board
     let board2Array = [];
     
-for (let i = 0; i < board2.length; i++){
-    for (let j = 0; j < board2.length; j++){
-        let html = ""
-        html += `<div class="cells2">${board2[i][j]}</div>`
-        board2Array.push(html)
+    for (let i = 0; i < board2.length; i++){
+        for (let j = 0; j < board2.length; j++){
+            let html = ""
+            html += `<div class="cells2">${board2[i][j]}</div>`
+            board2Array.push(html)
         }
     }
     board2Hold.innerHTML = board2Array.join("")
@@ -244,14 +236,14 @@ for (let i = 0; i < board2.length; i++){
         column = index % column;
         return [row, column]
     }
-    console.log(flipTo2D(5,10))
+    //console.log(flipTo2D(5,10))
 
 
     //flips a 2D array to 1d
     function flipTo1D(row, column, numCols){
         return row * numCols + column;
     }
-    console.log(flipTo1D(1,6,10))
+    //console.log(flipTo1D(1,6,10))
 
     //**********************************************************/
 
@@ -264,8 +256,8 @@ cpuPlayercellListener.forEach(function(item, index){
     item.addEventListener("click", function(e){
         
         
-        console.log(e.target) //logs the target to console
-        console.log(`${index}`)
+        //console.log(e.target) //logs the target to console
+        //console.log(`${index}`)
         oneDIndex = index;
 
         //1D format of the index is here
@@ -275,22 +267,22 @@ cpuPlayercellListener.forEach(function(item, index){
         //flip to 2D test is here
         let flip2D = flipTo2D(oneDIndex, 10)
         //ROW / COLUMN
-        console.log(flip2D)
+        //console.log(flip2D)
 
         let x = flip2D[0]
         let y = flip2D[1]
-        console.log(x,y) //flips to a x y format
+        //console.log(x,y) //flips to a x y format
 
         let matchCoords = `${x}-${y}`
-        console.log(matchCoords)
+        //console.log(matchCoords)
 
         //Here I push miss attempts to all queue
         cpuPlayer.allAttempts.push(matchCoords)
         //cpuPlayer.allAttempts = [...new Set(cpuPlayer.allAttempts)];
-        console.log(cpuPlayer.allAttempts)
+        //console.log(cpuPlayer.allAttempts)
         let cpuPlayerLength = cpuPlayer.allAttempts.length
 
-        /* THIS WORKS by removing one of the nodes fro array
+        /* THIS WORKS by removing one of the nodes from array
         for(let i = 0; i < cpuPlayer.queue.length; i++){
             console.log(i)
             console.log(cpuPlayer.queue[i])
@@ -304,7 +296,7 @@ cpuPlayercellListener.forEach(function(item, index){
         //console.log(cpuPlayer.queue)
 
 
-        //Dont Move !!!!
+        //Dont Move In case I want to hide letters and use colors!!!!
         //cpuPlayer.queue.forEach(function(coord){
           //  if (coord !== matchCoords){
             //    console.log(coord)
@@ -313,35 +305,24 @@ cpuPlayercellListener.forEach(function(item, index){
             changeDom.innerHTML = "M"
             //changeDom.style.backgroundColor = "blue"
         //} else if(coord === matchCoords){
-            console.log(index)
+            //console.log(index)
             } else if(changeDom.innerHTML === "S"){
                 let whoTurn = cpuPlayer
                 if(whoTurn === cpuPlayer){
                     cpuPlayer.queue.forEach(function(item,index){
                         if(item === matchCoords){
-
-                        
-
-                        console.log(item, "it is 8-4")
-                        console.log("i got here")
-                        let foundItem = item
-                        
-                        console.log(cpuPlayer.playerShips)
+                            let foundItem = item
+                            //console.log(cpuPlayer.playerShips)
                         cpuPlayerships.forEach(function(item, index){
-                            console.log(item.coords)
+                            //console.log(item.coords)
                             item.coords.forEach(function(element){
-                                //console.log(element)// Its found
-                                //console.log(foundItem)
                                 if(element === foundItem){
-
-                                    console.log("found", item)
+                                    //console.log("found", item)
                                     item.hits()
-                                    console.log(item)
                                     item.isSunk()
-                                    console.log(item.sunkStatus)
                                     cpuPlayerships.forEach(function(item){
-                                        console.log(item)
-                                        console.log(item.sunkStatus)
+                                        //console.log(item)
+                                        //console.log(item.sunkStatus)
                                         console.log(cpuPlayer.isAllSunk())
 
                                     })
@@ -350,21 +331,17 @@ cpuPlayercellListener.forEach(function(item, index){
                             
                         })                        
                     }
-                }) //ABOUT TO BREAK SHIT!!!!!
+                }) 
             } 
             changeDom.innerHTML = "H" //add here first
-            // THIS WORKS by removing one of the nodes fro array
-
 
             for(let i = 0; i < cpuPlayer.queue.length; i++){
-                //console.log(i)
-                //console.log(cpuPlayer.queue[i])
                 if(cpuPlayer.queue[i] === matchCoords){
                     cpuPlayer.queue = cpuPlayer.queue.filter(function(item){
                         return item !== matchCoords
                     })
                 }
-            }   console.log(cpuPlayer.queue)
+            }   //console.log(cpuPlayer.queue)
         
         
         }
@@ -376,33 +353,33 @@ cpuPlayercellListener.forEach(function(item, index){
 
 //Clicking anywhere on the cpu board causes the AI to play
 let cpucellListener = document.querySelectorAll(".cells3")
-console.log(cpucellListener) // what i need for html
+//console.log(cpucellListener) // what i need for html
 
 let cpuHolder = document.querySelector(".cpuHold")
-console.log(cpuHolder)
+//console.log(cpuHolder)
 
 //cpuHolder.addEventListener("click", function(e){
 cpucellListener.forEach(function(item){
     item.addEventListener("click", function(e){
 
-    console.log(e.target)
+    //console.log(e.target)
     let x = Math.floor(Math.random() * 10)
     let y = Math.floor(Math.random() * 10)
     let cpuCoords = `${x}-${y}`
-    console.log(cpuCoords)
+    //console.log(cpuCoords)
     cpu.allAttempts.push(cpuCoords)
 
     let cpu1DCoords = flipTo1D(x,y,10)
-    console.log(cpu1DCoords, " cpu 1Dcoords")
+    //console.log(cpu1DCoords, " cpu 1Dcoords")
 
     let cpu2DCoords = flipTo2D(cpu1DCoords,10)
-    console.log(cpu2DCoords, "cpu 2D coords")
+    //console.log(cpu2DCoords, "cpu 2D coords")
 
     //console.log(cpucellListener[cpu1DCoords].innerHTML)
     let cpuDomMatcher = cpucellListener[cpu1DCoords].innerHTML
-    console.log(cpuDomMatcher)
+    //console.log(cpuDomMatcher)
 
-    //Dont Move !!!!
+    //Dont Move If I want to hide the Letters M S H 
     //cpu.queue.forEach(function(coord){
        // if (coord !== cpuCoords){
          //   console.log(coord)
@@ -414,27 +391,25 @@ cpucellListener.forEach(function(item){
         } else if(cpuDomMatcher === "S"){
             cpucellListener[cpu1DCoords].innerHTML = "H"
             cpu.queue.forEach(function(item,index){
-                console.log(item)
-                console.log(cpuCoords)
+                //console.log(item)
+               // console.log(cpuCoords)
                 if (item === cpuCoords){
-                    console.log("Found item after cpu Hit")
+                    //console.log("Found item after cpu Hit")
                     let cpuFoundItem = item
 
-                    console.log(cpu.playerShips) // I log cpu ship items
+                    //console.log(cpu.playerShips) // I log cpu ship items
                     cpuships.forEach(function(item, index){
-                        console.log(item.coords) //logs the coords each object
+                        //console.log(item.coords) //logs the coords each object
                         item.coords.forEach(function(element){
-                            console.log(element)
-                            console.log(cpuFoundItem)
                             if (element === cpuFoundItem){
-                                console.log("Getting close to a end")
+                                //console.log("Getting close to a end")
                                 item.hits()
-                                console.log(item)
+                                //console.log(item)
                                 item.isSunk()
-                                console.log(item.sunkStatus)
+                                //console.log(item.sunkStatus)
                                 cpuships.forEach(function(item){
-                                    console.log(item)
-                                    console.log(item.sunkStatus)
+                                    //console.log(item)
+                                    //console.log(item.sunkStatus)
                                     console.log(cpu.isAllSunk())
                                 })
                             }
@@ -455,10 +430,6 @@ let cellListener = document.querySelectorAll(".cells")
 let oneDIndex;  // Dont TOUCH !!!!!!
 cellListener.forEach(function(item, index){
     item.addEventListener("click", function(e){
-        
-        
-        console.log(e.target) //logs the target to console
-        console.log(`${index}`)
         oneDIndex = index;
 
         //1D format of the index is here
@@ -468,19 +439,15 @@ cellListener.forEach(function(item, index){
         //flip to 2D test is here
         let flip2D = flipTo2D(oneDIndex, 10)
         //ROW / COLUMN
-        console.log(flip2D)
 
         let x = flip2D[0]
         let y = flip2D[1]
-        console.log(x,y) //flips to a x y format
 
         let matchCoords = `${x}-${y}`
-        console.log(matchCoords)
-
+        
         //Here I push miss attempts to all queue
         player1.allAttempts.push(matchCoords)
         //player1.allAttempts = [...new Set(player1.allAttempts)];
-        console.log(player1.allAttempts)
         let play1Length = player1.allAttempts.length
 
         /* THIS WORKS by removing one of the nodes fro array
@@ -506,61 +473,36 @@ cellListener.forEach(function(item, index){
             changeDom.innerHTML = "M"
             //changeDom.style.backgroundColor = "blue"
         //} else if(coord === matchCoords){
-            console.log(index)
+            //console.log(index)
             } else if(changeDom.innerHTML === "S"){
                 let whoTurn = player1
                 if(whoTurn === player1){
                     player1.queue.forEach(function(item,index){
                         if(item === matchCoords){
-
-                        
-
-                        console.log(item, "it is 8-4")
-                        console.log("i got here")
                         let foundItem = item
-                        
-                        console.log(player1.playerShips)
                         play1ships.forEach(function(item, index){
-                            console.log(item.coords)
                             item.coords.forEach(function(element){
-                                //console.log(element)// Its found
-                                //console.log(foundItem)
                                 if(element === foundItem){
-
-                                    console.log("found", item)
                                     item.hits()
-                                    console.log(item)
                                     item.isSunk()
-                                    console.log(item.sunkStatus)
                                     play1ships.forEach(function(item){
-                                        console.log(item)
-                                        console.log(item.sunkStatus)
                                         console.log(player1.isAllSunk())
-
-                                     
                                     })
                                 }
-                            })
-                            
+                            })    
                         })                        
                     }
-                }) //ABOUT TO BREAK SHIT!!!!!
+                }) 
             } 
             changeDom.innerHTML = "H" //add here first
-            // THIS WORKS by removing one of the nodes fro array
-
 
             for(let i = 0; i < player1.queue.length; i++){
-                //console.log(i)
-                //console.log(player1.queue[i])
                 if(player1.queue[i] === matchCoords){
                     player1.queue = player1.queue.filter(function(item){
                         return item !== matchCoords
                     })
                 }
-            }   console.log(player1.queue)
-        
-        
+            }   //console.log(player1.queue)
         }
     })
 }) //})
@@ -568,8 +510,6 @@ cellListener.forEach(function(item, index){
 let cellListener2 = document.querySelectorAll(".cells2")
 cellListener2.forEach(function(item, index){
     item.addEventListener("click", function(e){
-        console.log(e.target) //logs the target to console
-        console.log(`${index}`)
         oneDIndex = index;
 
         //1D format of the index is here
@@ -579,18 +519,15 @@ cellListener2.forEach(function(item, index){
         //flip to 2D test is here
         let flip2D = flipTo2D(oneDIndex, 10)
         //ROW / COLUMN
-        console.log(flip2D)
 
         let x = flip2D[0]
         let y = flip2D[1]
-        //console.log(x,y) //flips to a x y format
 
         let matchCoords = `${x}-${y}`
-        console.log(matchCoords, "clicked cords formatted")
         player2.allAttempts.push(matchCoords)
 
 
-        //Dont Move !!!!
+        //Dont Move Change the M H S to Letters
         //player2.queue.forEach(function(coord){
           //  if (coord !== matchCoords){
                // console.log(coord)
@@ -600,64 +537,47 @@ cellListener2.forEach(function(item, index){
             //changeDom.style.backgroundColor = "blue"
             changeDom.innerHTML = "M"
         //} else if(coord === matchCoords){
-            console.log(index)
-            console.log("this works")
         } else if(changeDom.innerHTML === "S"){
             //Determine the coords, the ship and the player
             let whoTurn = player2
             if(whoTurn === player2){
                 player2.queue.forEach(function(item,index){
                     if(item === matchCoords){
-                        console.log(item, "it is 1-6")
-                        console.log("i got here")
                         let foundItem = item
-                        
-                        console.log(player2.playerShips)
                         play2ships.forEach(function(item, index){
-                            //console.log(item.coords)
                             item.coords.forEach(function(element){
-                                //console.log(element)// Its found
-                                //console.log(foundItem)
                                 if(element === foundItem){
-                                    //console.log("found", item)
                                     item.hits()  //works
-                                    console.log(item)
                                     item.isSunk() //works
-                                    console.log(item.sunkStatus)
                                     play2ships.forEach(function(item){
-                                        console.log(item)
-                                        //console.log(item.sunkStatus)
+                                        //console.log(item)
                                         console.log(player2.isAllSunk())
                                     })
                                 }
                             }) 
                         })                        
                     }
-                }) //ABOUT TO BREAK SHIT!!!!!
+                }) 
             }
             changeDom.innerHTML = "H"
 
 
             for(let i = 0; i < player2.queue.length; i++){
-                //console.log(i)
-                //console.log(player1.queue[i])
                 if(player2.queue[i] === matchCoords){
                     player2.queue = player2.queue.filter(function(item){
                         return item !== matchCoords
                     })
                 }
-            }   console.log(player2.queue)
+            }   //console.log(player2.queue)
 
 
         }
     })
 })    
 //})
-//CPU GAME ENDS********************************************
 
 
-    
-    return "Welcome to battleship"
+    return "Welcome to battleship, I left the visual in a format so a person can read the code/game"
 }
 
 console.log(gamePlay())
