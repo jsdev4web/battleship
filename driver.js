@@ -209,7 +209,7 @@ function gamePlay(){
     ////CPUPlayer BOARD ENDS*****************************
 
     //CODE THAT FLIPS THE BOARDS*********WORKS!!**********
-    let whoIsPlaying = prompt("Are you playing Cpu 'yes or no' otherwise player vs player")
+    let whoIsPlaying = prompt("Are you playing Cpu TYPE 'yes or no' otherwise player vs player, \n game is not meant for mobile")
     if(whoIsPlaying === 'yes'){
         cpuPlayer.makeBoard()
         cpu.makeBoard()
