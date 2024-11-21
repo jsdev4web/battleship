@@ -203,12 +203,12 @@ export class Player extends Game {
         let stat = 0
         checker.forEach(function(item){
             
-            console.log(item.sunkStatus)
+            //console.log(item.sunkStatus)
             if(item.sunkStatus === false){
                 stat ++
             }
         })
-        console.log(stat)
+        //console.log(stat)
         if(stat === 0){
             console.log("game over")
             window.location.reload()

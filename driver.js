@@ -250,6 +250,8 @@ function gamePlay(){
 
 //CPUPLAYER board begins here NEEDS WORK************************/
 
+let matches;
+
 // cpuPlayer One clicks ******
 let cpuPlayercellListener = document.querySelectorAll(".cells4")
 //let oneDIndex;  // Dont TOUCH !!!!!!
@@ -301,12 +303,14 @@ cpuPlayercellListener.forEach(function(item, index){
         //To See Board
         cpuPlayer.queue.forEach(function(coord){ //off
             if (coord !== matchCoords){ //off
+                matches = false
             //    console.log(coord)
             //    console.log(matchCoords)
         //if(changeDom.innerHTML === " #"){ //on
-            changeDom.innerHTML = "M"
-            changeDom.style.backgroundColor = "blue" //off
+            //changeDom.innerHTML = "M"
+            changeDom.style.backgroundColor = "red" //off
         } else if(coord === matchCoords){ //off
+            matches = true
             //console.log(index)
             //} else if(changeDom.innerHTML === "S"){ //on
                 let whoTurn = cpuPlayer
@@ -325,7 +329,7 @@ cpuPlayercellListener.forEach(function(item, index){
                                     cpuPlayerships.forEach(function(item){
                                         //console.log(item)
                                         //console.log(item.sunkStatus)
-                                        console.log(cpuPlayer.isAllSunk())
+                                        cpuPlayer.isAllSunk()
 
                                     })
                                 }
@@ -335,7 +339,11 @@ cpuPlayercellListener.forEach(function(item, index){
                     }
                 }) 
             } 
-            changeDom.innerHTML = "H" //add here first
+            //changeDom.innerHTML = "H" //add here first
+            if (matches === true){
+                changeDom.innerText = "H"
+            } 
+
 
             for(let i = 0; i < cpuPlayer.queue.length; i++){
                 if(cpuPlayer.queue[i] === matchCoords){
@@ -387,8 +395,8 @@ cpucellListener.forEach(function(item){
          //   console.log(coord)
           //  console.log(cpuCoords)
     //if (cpuDomMatcher === " #"){
-        cpucellListener[cpu1DCoords].innerHTML = "M"
-        cpucellListener[cpu1DCoords].style.backgroundColor = "blue"
+        //cpucellListener[cpu1DCoords].innerHTML = "M"
+        cpucellListener[cpu1DCoords].style.backgroundColor = "red"
         } else if(coord === cpuCoords){
        // } else if(cpuDomMatcher === "S"){
             cpucellListener[cpu1DCoords].innerHTML = "H"
@@ -412,7 +420,7 @@ cpucellListener.forEach(function(item){
                                 cpuships.forEach(function(item){
                                     //console.log(item)
                                     //console.log(item.sunkStatus)
-                                    console.log(cpu.isAllSunk())
+                                    cpu.isAllSunk()
                                 })
                             }
                         })
@@ -469,12 +477,14 @@ cellListener.forEach(function(item, index){
         //Dont Move !!!!
         player1.queue.forEach(function(coord){
             if (coord !== matchCoords){
+                matches = false
             //    console.log(coord)
             //    console.log(matchCoords)
         //if(changeDom.innerHTML === " #"){
-            changeDom.innerHTML = "M"
-            changeDom.style.backgroundColor = "blue"
+            //changeDom.innerHTML = "M"
+            changeDom.style.backgroundColor = "red"
         } else if(coord === matchCoords){
+            matches = true
             //console.log(index)
             //} else if(changeDom.innerHTML === "S"){
                 let whoTurn = player1
@@ -488,7 +498,7 @@ cellListener.forEach(function(item, index){
                                     item.hits()
                                     item.isSunk()
                                     play1ships.forEach(function(item){
-                                        console.log(player1.isAllSunk())
+                                        player1.isAllSunk()
                                     })
                                 }
                             })    
@@ -496,7 +506,12 @@ cellListener.forEach(function(item, index){
                     }
                 }) 
             } 
-            changeDom.innerHTML = "H" //add here first
+            //changeDom.innerHTML = "H" //add here first
+
+            if (matches === true){
+                changeDom.innerText = "H"
+            } 
+
 
             for(let i = 0; i < player1.queue.length; i++){
                 if(player1.queue[i] === matchCoords){
@@ -516,7 +531,6 @@ cellListener2.forEach(function(item, index){
 
         //1D format of the index is here
         let changeDom = e.target
-        let changeDomHit = e.target
 
         //flip to 2D test is here
         let flip2D = flipTo2D(oneDIndex, 10)
@@ -528,17 +542,23 @@ cellListener2.forEach(function(item, index){
         let matchCoords = `${x}-${y}`
         player2.allAttempts.push(matchCoords)
 
+        
 
         //Dont Move Change the M H S to Letters
         player2.queue.forEach(function(coord){
             if (coord !== matchCoords){
-               // console.log(coord)
-               // console.log(matchCoords)
+                changeDom.style.backgroundColor = "red"
+                //console.log(coord)
+                //console.log(matchCoords)
+                matches = false
+                
                 
         //if(changeDom.innerHTML === " #"){
-            changeDom.style.backgroundColor = "blue"
-            changeDom.innerHTML = "M"
+                //changeDom.innerHTML = "M"
+            //changeDom.style.backgroundColor = "blue"
+            
         } else if(coord === matchCoords){
+            matches = true
         //} else if(changeDom.innerHTML === "S"){
             //Determine the coords, the ship and the player
             let whoTurn = player2
@@ -553,7 +573,7 @@ cellListener2.forEach(function(item, index){
                                     item.isSunk() //works
                                     play2ships.forEach(function(item){
                                         //console.log(item)
-                                        console.log(player2.isAllSunk())
+                                        player2.isAllSunk()
                                     })
                                 }
                             }) 
@@ -561,7 +581,10 @@ cellListener2.forEach(function(item, index){
                     }
                 }) 
             }
-            changeDom.innerHTML = "H"
+            
+            if (matches === true){
+                changeDom.innerText = "H"
+            } 
 
 
             for(let i = 0; i < player2.queue.length; i++){
